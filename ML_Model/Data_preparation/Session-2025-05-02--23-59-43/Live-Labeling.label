@@ -1,0 +1,2 @@
+Time(Seconds),Length(Seconds),Label(string),Confidence(double),Comment(string)
+0.0393095,4.8445659,footsteps,1,

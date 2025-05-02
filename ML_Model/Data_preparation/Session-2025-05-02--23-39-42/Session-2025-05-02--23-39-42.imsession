@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ImagimobStudio version="0.9">
+  <Timeline id="fd3d2f63-f60d-4bb9-bd14-e5efbe956057">
+    <Tracks>
+      <Track name="Wave File Data" type="audiowav" isLabelTrack="False">
+        <PayloadFile>Wave-File-Data.wav</PayloadFile>
+        <Shape>
+          <Axis name="" size="1" />
+        </Shape>
+      </Track>
+      <Track name="Live Labeling" type="labelcsv">
+        <PayloadFile>Live-Labeling.label</PayloadFile>
+        <Shape />
+      </Track>
+    </Tracks>
+  </Timeline>
+</ImagimobStudio>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ImagimobStudio version="0.9">
+  <Timeline id="70f9f1c5-6a2a-461c-9f6a-da292c927a92">
+    <Tracks>
+      <Track name="Wave File Data" type="audiowav" isLabelTrack="False" frequency="16000">
+        <PayloadFile>Wave-File-Data.wav</PayloadFile>
+        <Shape>
+          <Axis name="Audio" size="1">
+            <Label index="0">Mono</Label>
+          </Axis>
+        </Shape>
+      </Track>
+      <Track name="Live Labeling" type="labelcsv">
+        <PayloadFile>Live-Labeling.label</PayloadFile>
+        <Shape>
+          <Axis name="Labels" size="1">
+            <Label index="0">baby_crying</Label>
+          </Axis>
+        </Shape>
+      </Track>
+    </Tracks>
+  </Timeline>
+</ImagimobStudio>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ImagimobStudio version="1.1.0">
+  <Job id="35da1f89-04e5-44a7-ab32-46d1f0cb92d5" />
+  <ModelFactory>
+    <Epochs>100</Epochs>
+    <BatchSize>128</BatchSize>
+    <SplitCount>16</SplitCount>
+    <Patience>20</Patience>
+    <AppendModels>False</AppendModels>
+    <LossFunction>CategoricalCrossentropy</LossFunction>
+    <FactoryOptions>None</FactoryOptions>
+    <HardwareType>Default</HardwareType>
+    <TrainingEnvironment>
+    </TrainingEnvironment>
+    <ModelFamily>Conv1D</ModelFamily>
+    <ModelFlavor>SmallKern</ModelFlavor>
+    <ClassifierType>GlobalAveragePool</ClassifierType>
+    <Optimization>Balanced</Optimization>
+    <Pooling>True</Pooling>
+    <Downscale>False</Downscale>
+    <LearnRate>Mid</LearnRate>
+    <RegularizationFactor>Low</RegularizationFactor>
+    <LastNetworkInputShape>[10]</LastNetworkInputShape>
+    <Optimizer>
+      <LearningRate>0.001</LearningRate>
+      <WeightDecay>0.0001</WeightDecay>
+    </Optimizer>
+    <BuildSteps>
+      <Training />
+      <ConfusionMatrix />
+    </BuildSteps>
+  </ModelFactory>
+  <Database balance="AnnotatedLength" redistributionScope="Everything">
+    <DataSet id="unassigned" targetSize="0" labels="Unassigned">
+      <Session name="baby_crying" sessionId="711624b0-6178-4389-9648-ce732beab6cc" originalSessionId="00000000-0000-0000-0000-000000000000" ownerLocked="False" labelTrack="label" dataTrack="baby_crying_001" tags="LabelsMissing">
+        <DataFile shape="[1]" samplerate="16000" modified="5250499737384388804" start="0" length="5">../../../dataset/baby_crying/baby_crying_001.wav</DataFile>
+        <SessionFile>../../../dataset/baby_crying/baby_crying.imsession</SessionFile>
+        <LabelFile modified="5250504031372670905">../../../dataset/baby_crying/label.label</LabelFile>
+        <Labels />
+        <CustomColumnValues />
+      </Session>
+    </DataSet>
+    <DataSet id="train" targetSize="0.6" labels="Complete" />
+    <DataSet id="validation" targetSize="0.2" labels="Complete" />
+    <DataSet id="test" targetSize="0.2" labels="Complete" />
+  </Database>
+  <PredefinedLabels>
+    <Label>baby_crying</Label>
+    <Label>fire</Label>
+    <Label>dog</Label>
+    <Label>footsteps</Label>
+    <Label>glass_breaking</Label>
+  </PredefinedLabels>
+</ImagimobStudio>
