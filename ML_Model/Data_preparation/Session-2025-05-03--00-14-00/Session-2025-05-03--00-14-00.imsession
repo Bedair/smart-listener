@@ -2,7 +2,7 @@
 <ImagimobStudio version="0.9">
   <Timeline id="acf8053a-0ef1-448e-8289-5a7ce7747eb0">
     <Tracks>
-      <Track name="Wave File Data" type="audiowav" isLabelTrack="False" frequency="16000">
+      <Track name="Wave File Data" type="audiowav" isLabelTrack="False">
         <PayloadFile>Wave-File-Data.wav</PayloadFile>
         <Shape>
           <Axis name="Audio" size="1">
