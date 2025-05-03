@@ -1,6 +1,62 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ImagimobStudio version="1.1.0">
   <Job id="35da1f89-04e5-44a7-ab32-46d1f0cb92d5" />
+  <Preprocessor inshape="[1]" intype="Float32" infreq="16000" outshape="[50,30]" outtype="Float32">
+    <Unit id="Core.Queues.SlidingWindow">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="time_input" type="String">time</Argument>
+      <Argument param="window_shape" type="Shape">[512]</Argument>
+      <Argument param="stride" type="Int32">320</Argument>
+      <Argument param="buffer_multiplier" type="Double">1</Argument>
+      <Argument param="output" type="String">data</Argument>
+      <Argument param="time_output" type="String">time</Argument>
+    </Unit>
+    <Unit id="Core.Math.Hann">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="sym" type="Boolean">True</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Math.Fft.RealFft">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="axis" type="Int32">0</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Math.Norm">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="axis" type="Int32">0</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Signal.MelFilterbank">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="num_filters" type="Int32">30</Argument>
+      <Argument param="sample_rate" type="Int32">16000</Argument>
+      <Argument param="f_low" type="Int32">200</Argument>
+      <Argument param="f_high" type="Int32">7000</Argument>
+      <Argument param="htk" type="Boolean">True</Argument>
+      <Argument param="librosa" type="Boolean">False</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Math.Clip">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="min" type="Double">-3.40282347E+38</Argument>
+      <Argument param="max" type="Double">3.40282347E+38</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Math.Log">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="base" type="Double">0</Argument>
+      <Argument param="output" type="String">data</Argument>
+    </Unit>
+    <Unit id="Core.Queues.SlidingWindow">
+      <Argument param="input" type="String">data</Argument>
+      <Argument param="time_input" type="String">time</Argument>
+      <Argument param="window_shape" type="Shape">[50,30]</Argument>
+      <Argument param="stride" type="Int32">180</Argument>
+      <Argument param="buffer_multiplier" type="Double">1</Argument>
+      <Argument param="output" type="String">data</Argument>
+      <Argument param="time_output" type="String">time</Argument>
+    </Unit>
+  </Preprocessor>
   <ModelFactory>
     <Epochs>100</Epochs>
     <BatchSize>128</BatchSize>
@@ -135,7 +191,7 @@
         <SessionFile>../Data_preparation/Session-2025-05-02--22-39-45/Session-2025-05-02--22-39-45.imsession</SessionFile>
         <LabelFile modified="5250504207396880909">../Data_preparation/Session-2025-05-02--22-39-45/Live-Labeling.label</LabelFile>
         <Labels>
-          <Label count="1" length="4.9492232">fire</Label>
+          <Label count="1" length="4.9492231">fire</Label>
         </Labels>
         <CustomColumnValues />
       </Session>
@@ -909,7 +965,7 @@
         <SessionFile>../Data_preparation/Session-2025-05-02--22-36-56/Session-2025-05-02--22-36-56.imsession</SessionFile>
         <LabelFile modified="5250504206746149738">../Data_preparation/Session-2025-05-02--22-36-56/Live-Labeling.label</LabelFile>
         <Labels>
-          <Label count="1" length="4.9809505">fire</Label>
+          <Label count="1" length="4.9809504">fire</Label>
         </Labels>
         <CustomColumnValues />
       </Session>
@@ -1696,7 +1752,7 @@
         <SessionFile>../Data_preparation/Session-2025-05-03--00-14-00/Session-2025-05-03--00-14-00.imsession</SessionFile>
         <LabelFile modified="5250504212579441287">../Data_preparation/Session-2025-05-03--00-14-00/Live-Labeling.label</LabelFile>
         <Labels>
-          <Label count="1" length="4.9600686">footsteps</Label>
+          <Label count="1" length="4.9600685">footsteps</Label>
         </Labels>
         <CustomColumnValues />
       </Session>

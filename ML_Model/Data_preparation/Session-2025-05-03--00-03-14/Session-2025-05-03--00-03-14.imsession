@@ -2,7 +2,7 @@
 <ImagimobStudio version="0.9">
   <Timeline id="e38969d5-c045-4699-856b-45e32d8efb2d">
     <Tracks>
-      <Track name="Wave File Data" type="audiowav" isLabelTrack="False">
+      <Track name="Wave File Data" type="audiowav" isLabelTrack="False" frequency="0">
         <PayloadFile>Wave-File-Data.wav</PayloadFile>
         <Shape>
           <Axis name="Audio" size="1">
@@ -17,6 +17,10 @@
             <Label index="0">footsteps</Label>
           </Axis>
         </Shape>
+      </Track>
+      <Track name="Preprocessor" type="datacsv" timecoded="TimestampBeginDuration" isLabelTrack="False">
+        <PayloadFile>..\..\SmartListener_Model\PreprocessorTrack\Session-2025-05-03--00-03-14\Wave-File-Data_Preprocessor.data</PayloadFile>
+        <Shape />
       </Track>
     </Tracks>
   </Timeline>
