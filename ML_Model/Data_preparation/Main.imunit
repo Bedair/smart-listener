@@ -2,17 +2,18 @@
 <Imaginet version="2.0.0.0">
   <Compound unit="d419d86b-7b57-41d3-9a74-ab428f13a213">
     <Nodes>
-      <LabelListNode id="node_3" width="120" height="120" x="336.79999999999995" y="433.19999999999993" enabled="true" name="Predefined Labels">
+      <UnitNode id="node_0" x="552.8000000000001" y="82" enabled="true" name="Wave File Data" unit="ImagimobStudio.Modules.DataTrack" />
+      <LabelListNode id="node_3" width="120" height="120" x="551.1999999999999" y="273.99999999999994" enabled="true" name="Predefined Labels">
         <Label>baby_crying</Label>
         <Label>fire</Label>
         <Label>dog</Label>
         <Label>footsteps</Label>
         <Label>glass_breaking</Label>
+        <Label>unknown</Label>
       </LabelListNode>
-      <UnitNode id="node_1" x="43.19999999999993" y="263.60000000000014" enabled="true" unit="Imaginet.Units.Io.WaveFileReader">
-        <StringArgument param="file_path">D:/workspace/SmartListener/dataset/glass_breaking/glass_breaking_040.wav</StringArgument>
+      <UnitNode id="node_1" x="16.799999999999898" y="273.20000000000016" enabled="true" unit="Imaginet.Units.Io.WaveFileReader">
+        <StringArgument param="file_path">D:/workspace/SmartListener/dataset/unknown/rain_40.wav</StringArgument>
       </UnitNode>
-      <UnitNode id="node_0" x="412.0000000000001" y="61.20000000000002" enabled="true" name="Wave File Data" unit="ImagimobStudio.Modules.DataTrack" />
     </Nodes>
     <Connections>
       <Connection>
