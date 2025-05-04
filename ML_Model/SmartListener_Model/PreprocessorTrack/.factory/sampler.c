@@ -2,7 +2,7 @@
 * DEEPCRAFT Studio 5.3.2704+410e4fb4b60c8e7a62c8d76d1afc33d002b21553
 * Copyright © 2023- Imagimob AB, All Rights Reserved.
 * 
-* Generated at 05/03/2025 10:59:16 UTC. Any changes will be lost.
+* Generated at 05/04/2025 08:41:35 UTC. Any changes will be lost.
 * 
 * Memory    Size                      Efficiency
 * Buffers   6152 bytes (RAM)          100 %
@@ -28,7 +28,7 @@
 *    htk = True
 *    librosa = False
 * Clip                           [30]            float      dequeue
-*    min = -3.40282347E+38
+*    min = 0.00031
 *    max = 3.40282347E+38
 * Logarithm                      [30]            float      dequeue
 *    base = 0
@@ -3151,7 +3151,7 @@ int IMAI_dequeue(float *restrict data_out, float *restrict time_out) {
     rdft_ndim_f32(_K7, _K8, 1, 512, 1, _K9, _K10, _K11);
     norm_f32(_K8, 1, 2, 257, _K12);
     mel_f32(_K12, _K13, 257, 1, 30, _K14);
-    clip_f32(_K14, 30, -3.40282347E+38, 3.40282347E+38, _K15);
+    clip_f32(_K14, 30, 0.00031, 3.40282347E+38, _K15);
     loge_f32(_K15, 30, data_out);
     return 0;
 }
