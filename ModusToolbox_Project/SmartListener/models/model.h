@@ -1,20 +1,20 @@
 /*
-* ImagiNet Compiler 1.0.0+6a27c2615f796ebb0f4d9e8836e8f851e7d746ff
+* ImagiNet Compiler 5.3.2704+410e4fb4b60c8e7a62c8d76d1afc33d002b21553
 * Copyright © 2023- Imagimob AB, All Rights Reserved.
 * 
-* Generated at 06/18/2024 11:36:08 UTC. Any changes will be lost.
+* Generated at 05/04/2025 10:36:10 UTC. Any changes will be lost.
 * 
-* Model ID  c9edc744-c69e-44cf-8aa8-c9c648451396
+* Model ID  22d17b42-942e-4305-b5d1-e64318af048a
 * 
 * Memory    Size                      Efficiency
 * Buffers   14360 bytes (RAM)         86 %
-* State     26904 bytes (RAM)         100 %
-* Readonly  23580 bytes (Flash)       100 %
+* State     24904 bytes (RAM)         100 %
+* Readonly  77860 bytes (Flash)       100 %
 * 
 * Exported functions:
 * 
 *  @description: Try read data from model.
-*  @param data_out Output features. Output float[3].
+*  @param data_out Output features. Output float[6].
 *  @return IPWIN_RET_SUCCESS (0) or IPWIN_RET_NODATA (-1), IPWIN_RET_ERROR (-2), IPWIN_RET_STREAMEND (-3)
 *  int IMAI_dequeue(float *data_out);
 * 
@@ -48,7 +48,7 @@ typedef int32_t q31_t;       // 32-bit fractional data type in Q1.31 format.
 typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 
 // Model GUID (16 bytes)
-#define IMAI_MODEL_ID {0x44, 0xc7, 0xed, 0xc9, 0x9e, 0xc6, 0xcf, 0x44, 0x8a, 0xa8, 0xc9, 0xc6, 0x48, 0x45, 0x13, 0x96}
+#define IMAI_MODEL_ID {0x42, 0x7b, 0xd1, 0x22, 0x2e, 0x94, 0x05, 0x43, 0xb5, 0xd1, 0xe6, 0x43, 0x18, 0xaf, 0x04, 0x8a}
 
 // First nibble is bit encoding, second nibble is number of bytes
 #define IMAGINET_TYPES_NONE	(0x0)
@@ -66,17 +66,21 @@ typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 #define IMAGINET_TYPES_D8	(0x61)
 #define IMAGINET_TYPES_D16	(0x62)
 #define IMAGINET_TYPES_D32	(0x64)
+#define IMAGINET_TYPES_UINT8	(0x71)
+#define IMAGINET_TYPES_UINT16	(0x72)
+#define IMAGINET_TYPES_UINT32	(0x74)
+#define IMAGINET_TYPES_UINT64	(0x78)
 
-// data_out [3] (12 bytes)
+// data_out [6] (24 bytes)
 #define IMAI_DATA_OUT_RANK (1)
-#define IMAI_DATA_OUT_SHAPE (((int[]){3})
-#define IMAI_DATA_OUT_COUNT (3)
+#define IMAI_DATA_OUT_SHAPE (((int[]){6})
+#define IMAI_DATA_OUT_COUNT (6)
 #define IMAI_DATA_OUT_TYPE float
 #define IMAI_DATA_OUT_TYPE_ID IMAGINET_TYPES_FLOAT32
-#define IMAI_DATA_OUT_SHIFT 3
+#define IMAI_DATA_OUT_SHIFT 4
 #define IMAI_DATA_OUT_OFFSET 0
 #define IMAI_DATA_OUT_SCALE 1
-#define IMAI_DATA_OUT_SYMBOLS {"unlabelled", "down", "up"}
+#define IMAI_DATA_OUT_SYMBOLS {"unlabelled", "baby_crying", "fire", "dog", "footsteps", "glass_breaking"}
 
 // data_in [1] (4 bytes)
 #define IMAI_DATA_IN_RANK (1)
@@ -89,7 +93,7 @@ typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 #define IMAI_DATA_IN_SCALE 1
 #define IMAI_DATA_IN_SYMBOLS { }
 
-#define IMAI_KEY_MAX (29)
+#define IMAI_KEY_MAX (28)
 
 // Return codes
 #define IMAI_RET_SUCCESS 0
