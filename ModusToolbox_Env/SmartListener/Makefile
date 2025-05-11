@@ -7,7 +7,7 @@
 #
 ################################################################################
 # \copyright
-# Copyright 2024-2025, Cypress Semiconductor Corporation (an Infineon company)
+# Copyright 2018-2025, Cypress Semiconductor Corporation (an Infineon company)
 # SPDX-License-Identifier: Apache-2.0
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 ################################################################################
+
 
 ################################################################################
 # Basic Configuration
@@ -46,7 +46,7 @@ TARGET=APP_CY8CKIT-062S2-AI
 #
 # If APPNAME is edited, ensure to update or regenerate launch
 # configurations for your IDE.
-APPNAME=mtb-example-ml-deepcraft-deploy-audio
+APPNAME=mtb-example-wifi-mqtt-client
 
 # Name of toolchain to use. Options include:
 #
@@ -67,11 +67,15 @@ TOOLCHAIN=GCC_ARM
 # for your IDE.
 CONFIG=Debug
 
+# Default value for CORE is CM4 for PSoC 6 MCU and CM7 for XMC7000
+# You can change it to CM0P to port your application to CM0+.
+# Uncomment the below line to use CM0+ core.
+#
+# CORE=CM0P
+
 # If set to "true" or "1", display full command-lines when building.
 VERBOSE=
 
-# Only GCC_ARM toolchain is supported in this version of the code example
-MTB_SUPPORTED_TOOLCHAINS?=GCC_ARM
 
 ################################################################################
 # Advanced Configuration
@@ -87,7 +91,7 @@ MTB_SUPPORTED_TOOLCHAINS?=GCC_ARM
 # ... then code in directories named COMPONENT_foo and COMPONENT_bar will be
 # added to the build
 #
-COMPONENTS=ML_TFLM CMSIS_DSP ML_INT8x8
+COMPONENTS=FREERTOS LWIP MBEDTLS SECURE_SOCKETS
 
 # Like COMPONENTS, but disable optional code that was enabled by default.
 DISABLE_COMPONENTS=
@@ -100,13 +104,30 @@ SOURCES=
 
 # Like SOURCES, but for include directories. Value should be paths to
 # directories (without a leading -I).
-INCLUDES=
+INCLUDES=./configs ./configs/COMPONENT_$(CORE)
+
+# Custom configuration of mbedtls library.
+MBEDTLSFLAGS = MBEDTLS_USER_CONFIG_FILE='"mbedtls_user_config.h"'
 
 # Add additional defines to the build process (without a leading -D).
-DEFINES=ARM_MATH_DSP ARM_MATH_LOOPUNROLL TF_LITE_STATIC_MEMORY
+DEFINES=$(MBEDTLSFLAGS) CYBSP_WIFI_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF CY_RTOS_AWARE
+# Number of milliseconds to wait for a ping response to a ping
+DEFINES+= MQTT_PINGRESP_TIMEOUT_MS=5000
+# The number of retries for receiving CONNACK
+DEFINES+= MQTT_MAX_CONNACK_RECEIVE_RETRY_COUNT=2
+
+# CY8CPROTO-062-4343W board shares the same GPIO for the user button (USER BTN1)
+# and the CYW4343W host wake up pin. Since this example uses the GPIO for
+# interfacing with the user button, the SDIO interrupt to wake up the host is
+# disabled by setting CY_WIFI_HOST_WAKE_SW_FORCE to '0'.
+#
+# If you wish to enable this host wake up feature, Comment DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0.
+# If you want this feature on CY8CPROTO-062-4343W, change the GPIO pin for USER BTN
+# in design/hardware & Comment DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0.
+DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0
 
 # Select softfp or hardfp floating point. Default is softfp.
-VFP_SELECT=hardfp
+VFP_SELECT=
 
 # Additional / custom C compiler flags.
 #
@@ -140,6 +161,9 @@ PREBUILD=
 
 # Custom post-build commands to run.
 POSTBUILD=
+
+# To change the default policy
+CY_SECURE_POLICY_NAME=policy_single_CM0_CM4_smif_swap
 
 
 ################################################################################

@@ -1,8 +1,1 @@
-# Documentation
-images
-
-# Exports, Project settings
-.mtbLaunchConfigs
-.settings
-.vscode
-
+$(SEARCH_aws-iot-device-sdk-embedded-C)/libraries/standard/coreHTTP
