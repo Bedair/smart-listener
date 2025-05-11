@@ -1,20 +1,20 @@
 /*
-* ImagiNet Compiler 5.3.2286.65534+c6ef5c359ee8b0f0329ce97d29b692e3ece0f282
+* ImagiNet Compiler 5.3.2704+410e4fb4b60c8e7a62c8d76d1afc33d002b21553
 * Copyright © 2023- Imagimob AB, All Rights Reserved.
 * 
-* Generated at 02/27/2025 08:01:50 UTC. Any changes will be lost.
+* Generated at 05/04/2025 20:32:47 UTC. Any changes will be lost.
 * 
-* Model ID  736d8e23-13c3-4708-bfe3-dd223ab0f643
+* Model ID  21a29acf-8810-41e0-974f-29806e7fd7f8
 * 
 * Memory    Size                      Efficiency
 * Buffers   14360 bytes (RAM)         86 %
-* State     26904 bytes (RAM)         100 %
-* Readonly  117636 bytes (Flash)      100 %
+* State     24904 bytes (RAM)         100 %
+* Readonly  245824 bytes (Flash)      100 %
 * 
 * Exported functions:
 * 
 *  @description: Try read data from model.
-*  @param data_out Output features. Output float[36].
+*  @param data_out Output features. Output float[7].
 *  @return IPWIN_RET_SUCCESS (0) or IPWIN_RET_NODATA (-1), IPWIN_RET_ERROR (-2), IPWIN_RET_STREAMEND (-3)
 *  int IMAI_dequeue(float *data_out);
 * 
@@ -48,39 +48,39 @@ typedef int32_t q31_t;       // 32-bit fractional data type in Q1.31 format.
 typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 
 // Model GUID (16 bytes)
-#define IMAI_MODEL_ID {0x23, 0x8e, 0x6d, 0x73, 0xc3, 0x13, 0x08, 0x47, 0xbf, 0xe3, 0xdd, 0x22, 0x3a, 0xb0, 0xf6, 0x43}
+#define IMAI_MODEL_ID {0xcf, 0x9a, 0xa2, 0x21, 0x10, 0x88, 0xe0, 0x41, 0x97, 0x4f, 0x29, 0x80, 0x6e, 0x7f, 0xd7, 0xf8}
 
 // First nibble is bit encoding, second nibble is number of bytes
-#define IMAGINET_TYPES_NONE (0x0)
-#define IMAGINET_TYPES_FLOAT32  (0x14)
-#define IMAGINET_TYPES_FLOAT64  (0x18)
-#define IMAGINET_TYPES_INT8 (0x21)
-#define IMAGINET_TYPES_INT16    (0x22)
-#define IMAGINET_TYPES_INT32    (0x24)
-#define IMAGINET_TYPES_INT64    (0x28)
-#define IMAGINET_TYPES_Q7   (0x31)
-#define IMAGINET_TYPES_Q15  (0x32)
-#define IMAGINET_TYPES_Q31  (0x34)
-#define IMAGINET_TYPES_BOOL (0x41)
-#define IMAGINET_TYPES_STRING   (0x54)
-#define IMAGINET_TYPES_D8   (0x61)
-#define IMAGINET_TYPES_D16  (0x62)
-#define IMAGINET_TYPES_D32  (0x64)
-#define IMAGINET_TYPES_UINT8    (0x71)
-#define IMAGINET_TYPES_UINT16   (0x72)
-#define IMAGINET_TYPES_UINT32   (0x74)
-#define IMAGINET_TYPES_UINT64   (0x78)
+#define IMAGINET_TYPES_NONE	(0x0)
+#define IMAGINET_TYPES_FLOAT32	(0x14)
+#define IMAGINET_TYPES_FLOAT64	(0x18)
+#define IMAGINET_TYPES_INT8	(0x21)
+#define IMAGINET_TYPES_INT16	(0x22)
+#define IMAGINET_TYPES_INT32	(0x24)
+#define IMAGINET_TYPES_INT64	(0x28)
+#define IMAGINET_TYPES_Q7	(0x31)
+#define IMAGINET_TYPES_Q15	(0x32)
+#define IMAGINET_TYPES_Q31	(0x34)
+#define IMAGINET_TYPES_BOOL	(0x41)
+#define IMAGINET_TYPES_STRING	(0x54)
+#define IMAGINET_TYPES_D8	(0x61)
+#define IMAGINET_TYPES_D16	(0x62)
+#define IMAGINET_TYPES_D32	(0x64)
+#define IMAGINET_TYPES_UINT8	(0x71)
+#define IMAGINET_TYPES_UINT16	(0x72)
+#define IMAGINET_TYPES_UINT32	(0x74)
+#define IMAGINET_TYPES_UINT64	(0x78)
 
-// data_out [36] (144 bytes)
+// data_out [7] (28 bytes)
 #define IMAI_DATA_OUT_RANK (1)
-#define IMAI_DATA_OUT_SHAPE (((int[]){36})
-#define IMAI_DATA_OUT_COUNT (36)
+#define IMAI_DATA_OUT_SHAPE (((int[]){7})
+#define IMAI_DATA_OUT_COUNT (7)
 #define IMAI_DATA_OUT_TYPE float
 #define IMAI_DATA_OUT_TYPE_ID IMAGINET_TYPES_FLOAT32
-#define IMAI_DATA_OUT_SHIFT 3
+#define IMAI_DATA_OUT_SHIFT 4
 #define IMAI_DATA_OUT_OFFSET 0
 #define IMAI_DATA_OUT_SCALE 1
-#define IMAI_DATA_OUT_SYMBOLS {"unlabelled", "sheila", "three", "house", "follow", "down", "backward", "four", "five", "one", "tree", "six", "wow", "eight", "on", "learn", "visual", "zero", "nine", "bed", "bird", "forward", "right", "go", "marvin", "stop", "no", "dog", "seven", "happy", "yes", "two", "cat", "up", "left", "off"}
+#define IMAI_DATA_OUT_SYMBOLS {"unlabelled", "baby_crying", "fire", "dog", "footsteps", "glass_breaking", "unknown"}
 
 // data_in [1] (4 bytes)
 #define IMAI_DATA_IN_RANK (1)
@@ -93,7 +93,7 @@ typedef int64_t q63_t;       // 64-bit fractional data type in Q1.63 format.
 #define IMAI_DATA_IN_SCALE 1
 #define IMAI_DATA_IN_SYMBOLS { }
 
-#define IMAI_KEY_MAX (29)
+#define IMAI_KEY_MAX (28)
 
 // Return codes
 #define IMAI_RET_SUCCESS 0
