@@ -70,6 +70,8 @@
 /* LwIP header files */
 #include "lwip/netif.h"
 
+#include "ml_task.h"
+
 /******************************************************************************
 * Macros
 ******************************************************************************/
@@ -205,16 +207,9 @@ void mqtt_client_task(void *pvParameters)
     /* Set-up the MQTT client and connect to the MQTT broker. Jump to the 
      * cleanup block if any of the operations fail.
      */
+    vTaskDelay(pdMS_TO_TICKS(4000));
     if ( (CY_RSLT_SUCCESS != mqtt_init()) || (CY_RSLT_SUCCESS != mqtt_connect()) )
     {
-        goto exit_cleanup;
-    }
-
-    /* Create the subscriber task and cleanup if the operation fails. */
-    if (pdPASS != xTaskCreate(subscriber_task, "Subscriber task", SUBSCRIBER_TASK_STACK_SIZE,
-                              NULL, SUBSCRIBER_TASK_PRIORITY, &subscriber_task_handle))
-    {
-        printf("Failed to create the Subscriber task!\n");
         goto exit_cleanup;
     }
 
@@ -309,11 +304,8 @@ void mqtt_client_task(void *pvParameters)
      * cleanup for various operations based on the status_flag.
      */
     exit_cleanup:
-    printf("\nTerminating Publisher and Subscriber tasks...\n");
-    if (subscriber_task_handle != NULL)
-    {
-        vTaskDelete(subscriber_task_handle);
-    }
+    printf("\nTerminating Publisher task...\n");
+
     if (publisher_task_handle != NULL)
     {
         vTaskDelete(publisher_task_handle);
@@ -516,6 +508,10 @@ static cy_rslt_t mqtt_connect(void)
         if (result == CY_RSLT_SUCCESS)
         {
             printf("MQTT connection successful.\r\n");
+
+            /* Create the ML Task task. */
+            xTaskCreate(ml_inference_task, "ML Inference task", ML_INFERENCE_TASK_STACK_SIZE,
+                NULL, ML_INFERENCE_TASK_PRIORITY, NULL);
 
             /* Set the appropriate bit in the status_flag to denote successful
              * MQTT connection, and return the result to the calling function.

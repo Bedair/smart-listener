@@ -51,7 +51,7 @@
 
 /***************** MQTT CLIENT CONNECTION CONFIGURATION MACROS *****************/
 /* MQTT Broker/Server address and port used for the MQTT connection. */
-#define MQTT_BROKER_ADDRESS               "test.mosquitto.org"
+#define MQTT_BROKER_ADDRESS               "broker.hivemq.com"
 #define MQTT_PORT                         1883
 
 /* Set this macro to 1 if a secure (TLS) connection to the MQTT Broker is
@@ -66,13 +66,13 @@
 
 /********************* MQTT MESSAGE CONFIGURATION MACROS **********************/
 /* The MQTT topics to be used by the publisher and subscriber. */
-#define MQTT_PUB_TOPIC                    "ledstatus"
+#define MQTT_PUB_TOPIC                    "SmartListener"
 #define MQTT_SUB_TOPIC                    "ledstatus"
 
 /* Set the QoS that is associated with the MQTT publish, and subscribe messages.
  * Valid choices are 0, 1, and 2. Other values should not be used in this macro.
  */
-#define MQTT_MESSAGES_QOS                 ( 1 )
+#define MQTT_MESSAGES_QOS                 ( 0 )
 
 /* Configuration for the 'Last Will and Testament (LWT)'. It is an MQTT message
  * that will be published by the MQTT broker if the MQTT connection is
@@ -92,8 +92,8 @@
 /* MQTT messages which are published on the MQTT_PUB_TOPIC that controls the
  * device (user LED in this example) state in this code example.
  */
-#define MQTT_DEVICE_ON_MESSAGE            "TURN ON"
-#define MQTT_DEVICE_OFF_MESSAGE           "TURN OFF"
+#define MQTT_DEVICE_ON_MESSAGE            "BEDAIR ON"
+#define MQTT_DEVICE_OFF_MESSAGE           "BEDAIR OFF"
 
 
 /******************* OTHER MQTT CLIENT CONFIGURATION MACROS *******************/

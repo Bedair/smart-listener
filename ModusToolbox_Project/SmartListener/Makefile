@@ -76,6 +76,8 @@ CONFIG=Debug
 # If set to "true" or "1", display full command-lines when building.
 VERBOSE=
 
+MTB_SUPPORTED_TOOLCHAINS?=GCC_ARM
+
 
 ################################################################################
 # Advanced Configuration
@@ -91,7 +93,7 @@ VERBOSE=
 # ... then code in directories named COMPONENT_foo and COMPONENT_bar will be
 # added to the build
 #
-COMPONENTS=FREERTOS LWIP MBEDTLS SECURE_SOCKETS
+COMPONENTS=FREERTOS LWIP MBEDTLS SECURE_SOCKETS ML_TFLM CMSIS_DSP ML_INT8x8
 
 # Like COMPONENTS, but disable optional code that was enabled by default.
 DISABLE_COMPONENTS=
@@ -110,7 +112,7 @@ INCLUDES=./configs ./configs/COMPONENT_$(CORE)
 MBEDTLSFLAGS = MBEDTLS_USER_CONFIG_FILE='"mbedtls_user_config.h"'
 
 # Add additional defines to the build process (without a leading -D).
-DEFINES=$(MBEDTLSFLAGS) CYBSP_WIFI_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF CY_RTOS_AWARE
+DEFINES=$(MBEDTLSFLAGS) CYBSP_WIFI_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF CY_RTOS_AWARE ARM_MATH_DSP ARM_MATH_LOOPUNROLL TF_LITE_STATIC_MEMORY
 # Number of milliseconds to wait for a ping response to a ping
 DEFINES+= MQTT_PINGRESP_TIMEOUT_MS=5000
 # The number of retries for receiving CONNACK
@@ -127,7 +129,7 @@ DEFINES+= MQTT_MAX_CONNACK_RECEIVE_RETRY_COUNT=2
 DEFINES+=CY_WIFI_HOST_WAKE_SW_FORCE=0
 
 # Select softfp or hardfp floating point. Default is softfp.
-VFP_SELECT=
+VFP_SELECT= hardfp
 
 # Additional / custom C compiler flags.
 #

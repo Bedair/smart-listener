@@ -128,6 +128,7 @@ int main()
     xTaskCreate(mqtt_client_task, "MQTT Client task", MQTT_CLIENT_TASK_STACK_SIZE,
                 NULL, MQTT_CLIENT_TASK_PRIORITY, NULL);
 
+
     /* Start the FreeRTOS scheduler. */
     vTaskStartScheduler();
 
